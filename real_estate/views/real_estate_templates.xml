@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="root" name="Home Page">
+        <t t-call="website.layout">
+            <div>
+                <center><h1><b>Welcome in Real Estate!!!</b></h1></center>
+                <footer class="page-footer font-small blue pt-4">
+                    <div class="footer-copyright text-center py-3">
+                        © Copyright: Deepak Shah(desh)
+                    </div>
+                </footer>
+            </div>
+        </t>
+    </template>
+
+    <template id="hello_template" name="Hello template">
+        <t t-call="website.layout">
+        <h4><strong>Hello Template!!!</strong></h4>
+        <div>
+            <center><h1>WELCOME!!!</h1></center>
+        </div>
+        </t>
+    </template>
+
+    <template id="template_dynamic">
+        <t t-call="website.layout">
+        <div class="table">
+            <table>
+                <thead>
+                    <th>Sr.No.</th>
+                    <th>Title</th>
+                    <th>Postcode</th>
+                    <th>Tags</th>
+                </thead>
+                <tbody>
+                    <t t-set="sequence" t-value="0"/>
+                    <t t-foreach="property" t-as="prop">
+                        <t t-set="sequence" t-value="sequence + 1"/>
+                        <tr>
+                        <!-- <tr t-att-class="sequence % 2 == 0 and 'o_even' or ''"> -->
+                        <!--<tr t-attf-style="font-weight: bold;#{sequence % 2 == 0 and 'background: grey;' or ''}">-->
+                            <td><t t-out="sequence" /></td>
+                            <td><a t-att-href="'/view/estateproperty/%s' %prop.id"><t t-out="prop.name"/></a></td>
+                            <td>
+                                <t t-if="prop.postcode" t-out="prop.postcode" />
+                                <t t-else="">No Postcode Available</t>
+                            </td>
+                            <td><span t-field="prop.tags_ids"/></td>
+                            <td><a t-att-href="'/delete/estateproperty/%s' % prop.id">Delete</a></td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        </t>
+    </template>
+
+    <template id="call_template_dynamic" name="property">
+        <!--<t t-call="real_estate.template_dynamic" />-->
+        <t t-call="real_estate.properties_details"/>
+        <t t-set="a">Hello</t>
+    </template>
+
+    <template id="view">
+        <div>Hello</div>
+        <t t-out="property.id"/>
+    </template>
+
+    <template id="properties_details" name="Properties Details">
+        <t t-call="website.layout">
+            <div class="table">
+                <table>
+                    <thead>
+                        <th>Sr.No.</th>
+                        <th>Title</th>
+                        <th>Postcode</th>
+                        <th>Tags</th>
+                    </thead>
+                    <tbody>
+                        <t t-set="sequence" t-value="0"/>
+                        <t t-foreach="property" t-as="prop">
+                            <t t-set="sequence" t-value="sequence + 1"/>
+                            <tr>
+                            <!-- <tr t-att-class="sequence % 2 == 0 and 'o_even' or ''"> -->
+                            <!--<tr t-attf-style="font-weight: bold;#{sequence % 2 == 0 and 'background: grey;' or ''}">-->
+                                <td><t t-out="sequence" /></td>
+                                <td><a t-att-href="'/call_template/%s' %prop.id"><t t-out="prop.name"/></a></td>
+                                <td>
+                                    <t t-if="prop.postcode" t-out="prop.postcode" />
+                                    <t t-else="">No Postcode Available</t>
+                                </td>
+                                <td><span t-field="prop.tags_ids"/></td>
+                                <td><a t-att-href="'/delete/estateproperty/%s' % prop.id">Delete</a></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="property_details" name="property_details">
+        <div t-call="website.layout">
+            <center>
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="..."/>
+                    <div class="card-body">
+                        <h5 class="card-title">Name:<span t-field="property.name"/></h5>
+                        <p class="card-text">Description:<span t-field="property.description"/></p>
+                        <p class="card-text">Postcode:<span t-field="property.postcode"/></p>
+                        <p class="card-text">Property Type:<span t-field="property.property_type_id"/></p>
+                        <p class="card-text">Expected Price:<span t-field="property.expected_price"/></p>
+                        <p class="card-text">Sales Person:<span t-field="property.sales_person"/></p>
+                    </div>
+                </div><br/><br/>
+                <a t-att-href="'/call_template'" class="btn btn-primary">Sell All Property</a>  
+            </center>
+        </div>
+    </template>
+
+      <template id="property_static" name="Property">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="text-center font-weight-bold">Hello World</div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_property">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="report.external_layout">
+                    <div class="oe_structure"/>
+                    <div class="oe_structure"/>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

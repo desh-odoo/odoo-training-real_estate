@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="tag_wizard_form" model="ir.ui.view">
+            <field name="name">tag.wizard.form</field>
+            <field name="model">tag.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="tag_id"/>
+                    </group>
+                    <footer>
+                        <button type="object" class="btn-primary" name="action_add_tag" string="Add Tag"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_property_wizard" model="ir.actions.act_window">
+            <field name="name">Add Tag</field>
+            <field name="res_model">tag.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="real_estate.model_estate_property"/>
+            <field name="binding_view_types">list</field>
+        </record>
+
+        <record id="property_OfferPrice_wizard_form" model="ir.ui.view">
+            <field name="name">property.offerprice.wizard.form</field>
+            <field name="model">property.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="price"/>
+                        <field name="partner_id"/>
+                    </group>
+                    <footer>
+                        <button type="object" class="btn-primary" name="action_add_offer" string="Add Offer"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_property_OfferPrice_wizard" model="ir.actions.act_window">
+            <field name="name">Add Offer Price</field>
+            <field name="res_model">property.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="real_estate.model_estate_property"/>
+            <field name="binding_view_types">list</field>
+        </record>
+    </data>
+</odoo>

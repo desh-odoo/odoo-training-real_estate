@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_property_offers">
+        <t t-foreach="docs" t-as="property">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>
+                            <span t-field="property.name"/>
+                        </h2>
+                        <div>
+                            <strong>Sales Person:</strong>
+                            <span t-field="property.sales_person"/><br/>
+                            <strong>Expected Price: </strong>
+                            <span t-field="property.expected_price"/><br/>
+                            <strong>Status</strong>
+                            <span t-field="property.status"/><br/>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>price</th>
+                                    <th>Offer By</th>
+                                    <th>validity(Days)</th>
+                                    <th>Deadline</th>
+                                    <th>State</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="offers" t-value="property.mapped('offers_ids')"/>
+                                <tr t-foreach="offers" t-as="offer">
+                                    <td><span t-field="offer.price"/></td>
+                                    <td><span t-field="offer.partner_id"/></td>
+                                    <td><span t-field="offer.validity"/></td>
+                                    <td><span t-field="offer.date_deadline"/></td>
+                                    <td><t t-if="offer.status" t-out="offer.status" />
+                                    <t t-else="">No Information Available</t></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

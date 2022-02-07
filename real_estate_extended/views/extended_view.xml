@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <!--<record id="estate_property_form_inherited" model="ir.ui.view">
+            <field name="name">estate.property.form.inherited</field>
+            <field name="model">estate.property</field>
+            <field name="inherit_id" ref="real_estate.estate_property_view_form"/>
+            <field name="arch" type="xml">
+              
+                <xpath expr="//page[@name='other_info']" position="after">
+                    <page name="internal_details" string="Internal Details">
+                        <field name="new_field"/>
+                    </page>
+                </xpath>
+             
+            </field>
+        </record>-->
+
+        <record id="estate_property_form_inherited_" model="ir.ui.view">
+        <field name="name">Res User</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='preferences']" position="after">
+               <page string="Properties">
+                    <field name="property_id"/>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+    
+
+
+        <record id="crash_course_tree" model="ir.ui.view">
+            <field name="name">estate.property.lease.tree</field>
+            <field name="model">estate.property.lease</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="lease_duration"/>
+                    <field name="expected_price" string="Lease price(Monthly)"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="estate_property_extended_form" model="ir.ui.view">
+            <field name="name">estate.property.lease.form</field>
+            <field name="model">estate.property.lease</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="lease_duration"/><seprator/>
+                                <field name="expected_price" string="Lease Price(Monthly)"/>
+                                <field name="price_yearly" string="Total price per Year"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_property_extended">
+   		    <field name="name">Lease Property</field>
+            <field name="res_model">estate.property.lease</field>
+ 		    <field name="view_mode">tree,form</field>
+ 	    </record>
+
+        <!--<menuitem name="Lease Property" id="test_first_level_menu" parent="real_estate.test_menu_root" action="action_property_extended"/>-->
+        
+        <menuitem id="Lease_first_level_menu" name="Lease" parent="real_estate.test_menu_root"/>
+        <menuitem id="Lease_model_menu_action" parent="real_estate.test_menu_root" action="action_property_extended"/>
+
+    </data>
+</odoo>

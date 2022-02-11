@@ -50,7 +50,7 @@ msgstr ""
 #: model:ir.actions.act_window,name:real_estate.action_view_property_wizard
 #: model_terms:ir.ui.view,arch_db:real_estate.tag_wizard_form
 msgid "Add Tag"
-msgstr ""
+msgstr "qqqqq"
 
 #. module: real_estate
 #: model:ir.ui.menu,name:real_estate.test_first_level_menu

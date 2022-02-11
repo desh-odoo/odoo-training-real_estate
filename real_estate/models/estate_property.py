@@ -9,8 +9,6 @@ from odoo.exceptions import UserError, ValidationError
 
 
 class estate_property(models.Model):
-
-
     _name='estate.property'
     _description = 'estate properties model'
     _order = 'id desc'
@@ -220,5 +218,4 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     is_buyer = fields.Boolean()
-
 

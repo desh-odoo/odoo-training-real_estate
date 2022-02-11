@@ -100,7 +100,7 @@
         </t>
     </template>
 
-    <template id="property_details" name="property_details">
+    <template id="property_details" name="Property_Details">
         <div t-call="website.layout">
             <center>
                 <div class="card" style="width: 18rem;">
@@ -118,6 +118,13 @@
             </center>
         </div>
     </template>
+
+    <template id="customize_property" name="customize property" inherit_id="property_details"  customize_show="True">
+        <xpath expr="//div[contains(@class,'card-body')]" position="inside">
+            <div t-field="property.description"></div>
+        </xpath>
+    </template>
+
 
       <template id="property_static" name="Property">
         <t t-call="website.layout">
@@ -137,4 +144,8 @@
             </t>
         </t>
     </template>
-</odoo>
+
+    
+    
+    
+    </odoo>
